@@ -24,7 +24,22 @@ function heart(icon) {
     if(icon.classList.contains('fa-heart-alt')) {
         icon.classList.toggle("liked");
     }
-}   
+} 
+
+var listProducts = document.querySelector(".list-products");
+var totalSpan = document.querySelector(".total-price .total");
+
+function calculerTotal() {
+    var total = 0;
+    var cards = document.querySelectorAll(".list-products .card-body");
+    for (let i = 0; i < cards.length; i++) {
+        const price = parseFloat(cards[i].querySelector(".unit-price").textContent) || 0;
+        const quantity = parseInt(cards[i].querySelector(".quantity").textContent) || 0;
+        total = total + price * quantity;
+    }
+    totalSpan.textContent = total + " $";
+}
+calculerTotal()
     
 
 
