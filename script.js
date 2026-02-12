@@ -7,31 +7,31 @@ function plus(icon) {
 }
 
 function minus(icon) {
-        const quantity = icon.previousElementSibling;
+    const quantity = icon.previousElementSibling;
     if (parseInt(quantity.textContent) > 0) {
-         const quantityValue = parseInt(quantity.textContent) || 0;
-         quantity.textContent = quantityValue - 1;
+        const quantityValue = parseInt(quantity.textContent) || 0;
+        quantity.textContent = quantityValue - 1;
     }
 }
 
-function trash(icon) {    
+function trash(icon) {
     if (icon.classList.contains("fa-trash-alt")) {
         icon.parentElement.parentElement.parentElement.parentElement.remove();
     }
 }
 
 function heart(icon) {
-    if(icon.classList.contains('fa-heart-alt')) {
-        icon.classList.toggle("liked");
+    if (icon.classList.contains('fa-heart')) {
+        icon.classList.toggle("like");
     }
-} 
+}
 
 var listProducts = document.querySelector(".list-products");
 var totalSpan = document.querySelector(".total-price .total");
 
 function calculerTotal() {
     var total = 0;
-    var cards = document.querySelectorAll(".list-products .card-body");
+    var cards = document.querySelectorAll(".list-products .card");
     for (let i = 0; i < cards.length; i++) {
         const price = parseFloat(cards[i].querySelector(".unit-price").textContent) || 0;
         const quantity = parseInt(cards[i].querySelector(".quantity").textContent) || 0;
@@ -40,6 +40,6 @@ function calculerTotal() {
     totalSpan.textContent = total + " $";
 }
 calculerTotal()
-    
+
 
 
